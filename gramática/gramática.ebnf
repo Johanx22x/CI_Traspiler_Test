@@ -1,0 +1,66 @@
+Programa ::= { ListaInstrucciones | DeclaracionFuncion }
+
+ListaInstrucciones ::= { Instruccion }
+
+Instruccion ::= DeclaracionVariable 
+             | Asignacion
+             | EstructuraRepeticion
+             | EstructuraBifurcacion
+             | LlamadaFuncion
+             | Comentario
+
+DeclaracionVariable ::= TipoDato Asignacion
+
+Asignacion ::= Variable "=" Expresion ";"
+
+Expresion ::= { Termino { ("+" | "-") Termino } | Termino { ("<" | ">" | "==" | "!=" | "<=" | ">=") Termino } | ReferenciaFuncion }
+
+Termino ::= Factor { ("*" | "/") Factor }
+
+Factor ::= Numero
+        | Variable
+        | Booleano
+        | "(" Expresion ")"
+
+EstructuraRepeticion ::= "mientras" "(" Expresion ")" "{" ListaInstrucciones "}"
+
+EstructuraBifurcacion ::= "si" "(" Expresion ")" "{" ListaInstrucciones "}"
+                        | "si" "(" Expresion ")" "{" ListaInstrucciones "}" "sino" "{" ListaInstrucciones "}"
+
+DeclaracionFuncion ::= "funcion" NombreFuncion "(" ListaParametros ")" "{" ListaInstrucciones RetornoFuncion "}"
+
+RetornoFuncion ::= "retornar" Expresion ";"
+                | ε
+
+ListaParametros ::= Parametro { "," Parametro }
+
+Parametro ::= TipoDato NombreVariable
+
+TipoDato ::= "entero"
+            | "flotante"
+            | "texto"
+            | "booleano"
+
+ReferenciaFuncion ::= NombreFuncion "(" ListaArgumentos ")"
+
+LlamadaFuncion ::= ReferenciaFuncion ";"
+
+ListaArgumentos ::= Expresion { "," Expresion }
+
+Comentario ::= "//" texto_comentario
+            | "/*" texto_comentario "*/"
+
+Numero ::= entero
+        | flotante
+
+Variable ::= NombreVariable
+
+Booleano ::= verdadero
+          | falso
+
+NombreFuncion ::= identificador
+
+NombreVariable ::= identificador 
+
+texto_comentario ::= cualquier secuencia de caracteres
+identificador ::= cualquier secuencia de letras y números que comience con una letra

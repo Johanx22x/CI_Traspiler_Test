@@ -1,0 +1,39 @@
+// Declaración de variables globales
+entero variable_global = 10;
+flotante pi = 3.1416;
+entero x = 5 + 7 * (7 + 1) * 712;
+
+// Definición de una función que suma dos números
+funcion sumar(entero a, entero b) {
+    // Declaración de variables locales
+    entero resultado = a + b;
+    si (resultado > 10) {
+        resultado = resultado + 10;
+    }
+    retornar resultado;
+}
+
+// Llamada a la función sumar y asignación del resultado a una variable
+entero resultado_suma = sumar(5 - 3, 7);
+
+// Estructura de repetición
+entero contador = 0;
+mientras (contador < 5) {
+    imprimir("Iteración ", (contador + 1));
+    contador = contador + 1;
+}
+
+// Estructura de bifurcación
+si (resultado_suma > 10) {
+    imprimir("El resultado de la suma es mayor que 10.");
+    si (verdadero) {
+        imprimir("Esta condición siempre se cumple.");
+    }
+} sino {
+    imprimir("El resultado de la suma es menor o igual que 10.");
+}
+
+// Comentario de una sola línea
+// Esto es un comentario de una sola línea.
+
+// Comentario de varias líneas
